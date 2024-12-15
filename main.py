@@ -1,21 +1,19 @@
 import pygame
 import time
 import random
+from player import Player
 
 pygame.font.init()
 
 WIDTH, HEIGHT = 1000, 800
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 
-PLAYER_HITBOX_X = 40
-PLAYER_HITBOX_Y = 60
-PLAYER_SPEED = 5
 FONT = pygame.font.SysFont("arial", 30)
 clock = pygame.time.Clock()
 start_time = time.time()
 elapsed_time = 0
 
-pygame.display.set_caption("Testing")
+pygame.display.set_caption("Galaga")
 
 BG_IMG = pygame.transform.scale(pygame.image.load("./assets/bg.jpg"), (WIDTH, HEIGHT))
 
@@ -28,8 +26,7 @@ def draw(player, elapsed_time):
 
 def main():
     run = True
-    player = pygame.Rect(200, HEIGHT - PLAYER_HITBOX_Y + 10, PLAYER_HITBOX_Y, PLAYER_HITBOX_X)
-
+    object = Player()
     while run:
         clock.tick(90)
         elapsed_time = time.time() - start_time
@@ -39,16 +36,19 @@ def main():
                 break
 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and player.x > 10:
-            player.x -= PLAYER_SPEED
-        if keys[pygame.K_RIGHT] and player.x < WIDTH - PLAYER_HITBOX_X - 30:
-            player.x += PLAYER_SPEED
-        
-        draw(player, elapsed_time)
+
+        if keys[pygame.K_LEFT] and object.PLAYER.x > 10:
+            object.moveLeft()
+        if keys[pygame.K_RIGHT] and object.PLAYER.x < WIDTH - object.PLAYER_HITBOX_X - 10:
+            object.moveRight()
+        if keys[pygame.K_UP] and object.PLAYER.y > 10:
+            object.moveUp()
+        if keys[pygame.K_DOWN] and object.PLAYER.y < (HEIGHT - 10 - object.PLAYER_HITBOX_Y):
+            object.moveDown()
+        draw(object.PLAYER, elapsed_time)
 
     pygame.quit()
 
 
 if __name__ == "__main__":
     main()
-
