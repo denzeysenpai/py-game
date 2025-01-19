@@ -3,29 +3,20 @@ import time
 import random
 from player import Player
 pygame.font.init()
-<<<<<<< HEAD
-WIDTH, HEIGHT = 1000, 800
-=======
-
 WIDTH, HEIGHT = 1000, 600
->>>>>>> b155d1b032028b0c97de966d20371e8ab3353db4
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 FONT = pygame.font.SysFont("arial", 30)
 clock = pygame.time.Clock()
 start_time = time.time()
 elapsed_time = 0
-<<<<<<< HEAD
 BULLET_SPEED = 30
 pygame.display.set_caption("Galaga")
-=======
-BULLET_SPEED = 1
 
 starting_pos = (0,0)
 
 
 pygame.display.set_caption("Maryo")
 
->>>>>>> b155d1b032028b0c97de966d20371e8ab3353db4
 BG_IMG = pygame.transform.scale(pygame.image.load("./assets/bg.jpg"), (WIDTH, HEIGHT))
 
 def draw(player, elapsed_time, shoot):
