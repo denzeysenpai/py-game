@@ -11,14 +11,9 @@ start_time = time.time()
 elapsed_time = 0
 BULLET_SPEED = 30
 pygame.display.set_caption("Galaga")
-
 starting_pos = (0,0)
-
-
 pygame.display.set_caption("Maryo")
-
 BG_IMG = pygame.transform.scale(pygame.image.load("./assets/bg.jpg"), (WIDTH, HEIGHT))
-
 def draw(player, elapsed_time, shoot):
     WIN.blit(BG_IMG, (0,0))
     time_text = FONT.render(f"TIME: {round(elapsed_time)}s", 1, "white")
